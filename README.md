@@ -10,6 +10,7 @@ Bài gồm hai phần: **nhóm 3–4 người** thực hành trên một PCD đ�
 | [Gói Student tải/chạy](bundle/README-STUDENT.md) | Tải ZIP đúng máy, chạy A/B/C không cần GPU |
 | [PRE-LABEL.md](PRE-LABEL.md) | Trước khi sửa cuboid: chạy PointPillars và kiểm lỗi pipeline |
 | [PRE-LABEL-REPORT.md](PRE-LABEL-REPORT.md), [TEAMMATES.md](TEAMMATES.md) | Ghi bằng chứng thí nghiệm và nhận xét từng thành viên |
+| [Hướng dẫn nạp pre-label có hình](HUONG-DAN-NAP-PRE-LABEL.md) | Đăng nhập → nạp Robotaxi đúng job → chỉnh → QC → v2 |
 | [HUONG-DAN.md](HUONG-DAN.md) | Thao tác nguồn → nộp v1 → QC → sửa và nộp v2 |
 | [LABEL_GUIDELINE.md](LABEL_GUIDELINE.md) | Trước frame đầu tiên và khi không chắc class/hình học |
 | [RUBRIC.md](RUBRIC.md) | Tự kiểm bài và hiểu LC kiểm tra những gì |
@@ -52,11 +53,11 @@ Theo [PRE-LABEL.md](PRE-LABEL.md), đọc JSON, ảnh Side và CSV. Sau đó ki�
 
 ### Vòng làm bài vận hành thế nào?
 
-Bạn có **30 job nguồn**, mỗi job là một frame. Bài riêng theo người; không cùng sửa một job với bạn trong nhóm. Sửa class, tâm, kích thước, hướng và hộp thiếu/thừa bằng PCD cùng ảnh camera. Rà cả năm class của schema. Điểm thưa hoặc vùng che khuất cần ghi sự chưa chắc; không co hộp sát vài điểm hoặc giữ nhãn chỉ vì model đã vẽ.
+Bạn có **30 job nguồn**, mỗi job là một frame. Job nguồn mới được tạo **trống theo mặc định**; bài đã import/chỉnh trước đó được giữ nguyên. Trước khi chỉnh, bấm **Nạp pre-label cho job này** trên portal; hệ thống lấy prediction Robotaxi đã chạy trước, kiểm đúng frame/schema và chỉ nạp vào job nguồn trống của mình. Đây không phải lượt tự chạy model của học viên. Không import prediction KITTI demo vào Robotaxi. Bài riêng theo người; không cùng sửa một job với bạn trong nhóm. Sửa class, tâm, kích thước, hướng và hộp thiếu/thừa bằng PCD cùng ảnh camera. Rà cả năm class của schema. Điểm thưa hoặc vùng che khuất cần ghi sự chưa chắc; không co hộp sát vài điểm hoặc giữ nhãn chỉ vì model đã vẽ.
 
 Sau khi nộp, **snapshot v1** là bản cố định để người khác đối chiếu. Người QC chỉ xem snapshot và gửi feedback; tác giả sửa tại job nguồn để tạo **v2**. Không cần làm hết 30 job trước khi QC, và không phải chờ một người cụ thể. Người nhận QC có thể khác lớp. Theo [HUONG-DAN.md](HUONG-DAN.md) để đọc nút, trạng thái và cách xử lý lỗi.
 
-1. Mở nguồn → kiểm/sửa theo [guideline](LABEL_GUIDELINE.md) → **Save** trong CVAT.
+1. Bắt đầu phiên → **Nạp pre-label cho job này** trên thẻ nguồn → mở lại CVAT → kiểm/sửa theo [guideline](LABEL_GUIDELINE.md) → **Save** trong CVAT.
 2. Trở lại portal, khai đúng phạm vi rà rồi **Nộp job vào hàng đợi QC**. Đợi trạng thái từ `importing` sang `ready`; làm job khác trong lúc chờ.
 3. Bấm **Nhận bài QC ngẫu nhiên** → **Xem snapshot 3D chỉ đọc** → ghi loại lỗi, ID/vùng, bằng chứng và đề xuất → **Nộp toàn bộ feedback**.
 4. Khi nguồn có feedback, mở lại nguồn để đối chiếu/sửa → **Save** → chọn kết luận và **Nộp bản sửa và phản hồi** trên portal. Nếu thiếu bằng chứng, ghi rõ hoặc chọn **Cần coach phân xử**.
