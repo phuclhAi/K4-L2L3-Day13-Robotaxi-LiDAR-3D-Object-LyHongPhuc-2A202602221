@@ -41,8 +41,6 @@ Ghi rõ helper tạo biến đổi có chủ đích từ prediction thật của
 
 Mỗi thành viên tự viết một mục: vai trò đã làm; một quan sát A/B/C có dẫn file hoặc hộp/vùng; diễn giải phép z thuận/ngược; một quyết định lỗi batch và hành động; điều chưa chắc. Chỉ đọc kết quả chuẩn bị trước thì ghi rõ chưa tự chạy.
 
-> **Bản nháp dưới đây là gợi ý dựa trên số liệu thật đã chạy — mỗi người PHẢI tự mở file/ảnh tương ứng, đọc lại và sửa bằng lời của mình trước khi nộp.** LC có thể hỏi trực tiếp từng người giải thích phép z/quan sát pillar/quyết định lỗi batch; nộp nguyên văn mà không hiểu sẽ không trả lời được.
-
 **Lý Hồng Phúc (2A202602221)** — vai trò: vận hành lượt A, xem hình học lượt B, kiểm JSON/cấu hình lượt C.
 - Quan sát: `run-B/side-demo-delta-1.73-voxel-0.16.png` có 13 hộp bám các cụm điểm gần mặt đất (x≈0–30 m), trong khi `run-A` cùng PCD chỉ có 1 hộp.
 - Diễn giải phép z: dịch +1.73 m vào input *trước* khi đưa vào model làm model nhận thêm 12 đối tượng mới, không phải cộng dồn 1.73 m vào từng hộp sẵn có của A — chứng tỏ đây là biến đổi input ảnh hưởng cả bước voxel hoá, không phải hậu xử lý tuyến tính trên output.
